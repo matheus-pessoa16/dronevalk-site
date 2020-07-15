@@ -22,7 +22,8 @@
   <link href="css/style.css" rel="stylesheet">
 
   <script src="https://kit.fontawesome.com/e53648f73c.js" crossorigin="anonymous"></script>
-
+  <script src="https://smtpjs.com/v3/smtp.js">
+  </script>
 
   <!-- =======================================================
     Template Name: CleanLanding
@@ -120,7 +121,7 @@
     <div class="d-flex justify-content-center mt">
         <div class="col-md-8">
           <h2 class="centered">Inscreva-se já!</h2>
-          <form class="contact-form php-mail-form" role="form" action="contactform/contactform.php" method="POST">
+          <form class="contact-form php-mail-form" id="contact-form" role="form" action="contactform/contactform.php" method="POST">
 
             <div class="form-group">
               <input type="name" name="name" class="form-control" id="contact-name" placeholder="Nome" data-rule="minlen:4" data-msg="Please enter at least 4 chars" >
@@ -138,10 +139,19 @@
               <input type="text" name="cpf" class="form-control" id="contact-cpf" placeholder="CPF" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
               <div class="validate"></div>
             </div>
+            <div class="form-group">
+              <input type="text" name="telephone" class="form-control" id="contact-telephone" placeholder="Telefone" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
+              <div class="validate"></div>
+            </div>
+
+            <div class="form-group">
+              <textarea class="form-control" name="message" id="contact-message" placeholder="Mensagem" rows="5" data-rule="required" data-msg="Please write something for us"></textarea>
+              <div class="validate"></div>
+            </div>
 
             <div class="loading"></div>
             <div class="error-message"></div>
-            <div class="sent-message">Sua mensagem foi enviar. Muito obrigado!</div>
+            <div class="sent-message">Sua mensagem foi enviar. Entraremos em contato em breve!</div>
 
             <div class="form-send">
               <button type="submit" class="btn btn-large">Enviar</button>
@@ -178,6 +188,21 @@
 
   <!-- Template Main Javascript File -->
   <script src="js/main.js"></script>
+
+    <script type="text/javascript">
+		function sendEmail() {
+			Email.send({
+				SecureToken : "1C509B94103EACEADC341CCB56EC05EF4295A7B09F44A26C7AE190DDCBF972B377B707C225B1D1A4F2F7643FB5840A86",
+                To : 'matheus.pessoa16@gmail.com',
+                From : "matheus.pessoa16@gmail.com",
+                Subject : "This is the subject",
+                Body : "And this is the body"
+			})
+			.then(function(message){
+				alert("mail sent successfully")
+			});
+		}
+    </script>
 
 </body>
 </html>
